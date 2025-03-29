@@ -22,11 +22,10 @@ export default function ImageModal({ isOpen, onClose, selectedImg }) {
 
   return (
     <Modal
-      isOpen={isOpen}
-      onRequestClose={onClose}
-      contentLabel="Simple modal"
       className={clsx(s.modal)}
       overlayClassName={clsx(s.modalOverlay)}
+      isOpen={isOpen}
+      onRequestClose={onClose}
     >
       <div className={clsx(s.modalImgCont)}>
         <img className={clsx(s.modalImg)} src={regular} alt={alt} />

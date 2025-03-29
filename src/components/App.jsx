@@ -29,10 +29,12 @@ export default function App() {
 
   function openModal() {
     setIsOpen(true);
+    document.body.classList.add("no-scroll");
   }
 
   function closeModal() {
     setIsOpen(false);
+    document.body.classList.remove("no-scroll");
   }
 
   const pageIncrement = () => {
