@@ -1,35 +1,25 @@
 import clsx from "clsx";
 import s from "./ImageModal.module.css";
 import Modal from "react-modal";
-import { useContext } from "react";
-import { GalleryContext } from "../../providers/GalleryProvider/GalleryProvider";
 
 Modal.setAppElement("#root");
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
-export default function ImageModal({ isOpen, onClose }) {
-  const { selectedImg } = useContext(GalleryContext);
-  const { image } = selectedImg;
+export default function ImageModal({ isOpen, onClose, selectedImg }) {
   const {
     alt_description: alt,
     created_at: date,
     likes,
     urls,
     user: author,
-  } = image;
+  } = selectedImg;
   const { regular } = urls;
-  const { instagram_username: insta, links, location, name } = author;
-  const { html, portfolio, self } = links;
+  const {
+    instagram_username: insta,
+    links: { html },
+    location,
+    name,
+  } = author;
+
   return (
     <Modal
       isOpen={isOpen}

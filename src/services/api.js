@@ -15,6 +15,5 @@ export const fetchImagesByQuery = async (userQuery, page) => {
       page,
     },
   });
-  console.log(response);
   return response.data;
 };
