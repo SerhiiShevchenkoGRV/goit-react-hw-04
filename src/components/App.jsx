@@ -16,7 +16,7 @@ export default function App() {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const [topLoader, setTopLoader] = useState(false);
   const [bottomLoader, setBottomLoader] = useState(false);
   const [color, setColor] = useState("#ED3B44");
@@ -53,6 +53,13 @@ export default function App() {
           userQuery,
           page
         );
+        if (results.length === 0) {
+          setIsError(true);
+          setErrorMessage(
+            "Sorry, there is no results found. Please, try another request"
+          );
+          return;
+        }
         setImages((prev) => [...prev, ...results]);
         setTotalPages(total_pages);
       } catch (error) {
